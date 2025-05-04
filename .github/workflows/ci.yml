@@ -27,11 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Debug env
-        run: |
-          if [ -z "$SUPABASE_URL" ]; then echo "❌ SUPABASE_URL is empty"; else echo "✅ SUPABASE_URL is set"; fi
-          if [ -z "$SUPABASE_KEY" ]; then echo "❌ SUPABASE_KEY is empty"; else echo "✅ SUPABASE_KEY is set"; fi
-
       - name: Run script.py
         run: python script.py
 
