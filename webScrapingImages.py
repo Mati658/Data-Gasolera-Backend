@@ -23,19 +23,24 @@ def main():
 
     soup = BeautifulSoup(html, 'html.parser')
 
+
     imagenes = soup.find_all('img', class_='table_table_team_image___vCP0')
 
     data = {
         'zona_a':{},
         'zona_b':{}
     }
-
+    i = 0
     for item in imagenes:
+        i+=1
         if len(data['zona_a']) <= 17:
-            data['zona_a'].update({item.get_attribute_list('alt')[0] : item.get_attribute_list('src')[0]})
+            data['zona_a'].update({i : item.get_attribute_list('src')[0]})
             continue
 
-        data['zona_b'].update({item.get_attribute_list('alt')[0]: item.get_attribute_list('src')[0]})
+        if i ==19:
+            i=1
+
+        data['zona_b'].update({i: item.get_attribute_list('src')[0]})
 
         
         if len(data['zona_b']) == 18:
