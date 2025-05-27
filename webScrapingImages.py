@@ -11,7 +11,7 @@ from supabaseService import Supabase
 
 
 def main():
-    supabase = Supabase()
+    # supabase = Supabase()
     service = Service(ChromeDriverManager().install())
     option = webdriver.ChromeOptions()
     option.add_argument("--headless")
@@ -26,16 +26,16 @@ def main():
     imagenes = soup.find_all('img', class_='table_table_team_image___vCP0')
 
     data = {
-        'zona_a':[],
-        'zona_b':[]
+        'zona_a':{},
+        'zona_b':{}
     }
 
     for item in imagenes:
         if len(data['zona_a']) <= 17:
-            data['zona_a'].append({item.get_attribute_list('alt')[0] : item.get_attribute_list('src')[0]})
+            data['zona_a'].update({item.get_attribute_list('alt')[0] : item.get_attribute_list('src')[0]})
             continue
 
-        data['zona_b'].append({item.get_attribute_list('alt')[0]: item.get_attribute_list('src')[0]})
+        data['zona_b'].update({item.get_attribute_list('alt')[0]: item.get_attribute_list('src')[0]})
 
         
         if len(data['zona_b']) == 18:
@@ -45,7 +45,7 @@ def main():
 
     driver.quit()
 
-    supabase.upload_data('imagenes', data)
+    # supabase.upload_data('imagenes', data)
 
 
 if __name__ == "__main__":
