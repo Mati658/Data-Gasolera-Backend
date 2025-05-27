@@ -35,7 +35,8 @@ def main():
             data['zona_a'].append({item.get_attribute_list('alt')[0] : item.get_attribute_list('src')[0]})
             continue
 
-        data['zona_b'].append({item.get_attribute_list('alt')[0], item.get_attribute_list('src')[0]})
+        data['zona_b'].append({item.get_attribute_list('alt')[0]: item.get_attribute_list('src')[0]})
+
         
         if len(data['zona_b']) == 18:
             break
