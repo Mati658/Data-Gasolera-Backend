@@ -11,7 +11,7 @@ from supabaseService import Supabase
 
 
 def main():
-    # supabase = Supabase()
+    supabase = Supabase()
     service = Service(ChromeDriverManager().install())
     option = webdriver.ChromeOptions()
     option.add_argument("--headless")
@@ -45,7 +45,7 @@ def main():
 
     driver.quit()
 
-    # supabase.upload_data('imagenes', data)
+    supabase.upload_data('imagenes', data)
 
 
 if __name__ == "__main__":
