@@ -32,3 +32,6 @@ jobs:
 
       - name: Run webScraping.py
         run: python webScraping.py
+
+      - name: Run webScrapingImages.py
+        run: python webScrapingImages.py
