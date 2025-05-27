@@ -32,10 +32,10 @@ def main():
 
     for item in imagenes:
         if len(data['zona_a']) <= 17:
-            data['zona_a'].append({'name':item.get_attribute_list('alt')[0], 'url':item.get_attribute_list('src')[0]})
+            data['zona_a'].append({item.get_attribute_list('alt')[0] : item.get_attribute_list('src')[0]})
             continue
 
-        data['zona_b'].append({'name':item.get_attribute_list('alt')[0], 'url':item.get_attribute_list('src')[0]})
+        data['zona_b'].append({item.get_attribute_list('alt')[0], item.get_attribute_list('src')[0]})
         
         if len(data['zona_b']) == 18:
             break
