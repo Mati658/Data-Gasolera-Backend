@@ -8,14 +8,16 @@ def main():
 
     if response.status_code == 200:
         data = response.json()
+        if data:
+            fixture = {
+                'zona_a': data['tables_groups'][0]['tables'][0]['table']['rows'],
+                'zona_b': data['tables_groups'][0]['tables'][1]['table']['rows']
+            }
 
-        fixture = {
-            'zona_a': data['tables_groups'][0]['tables'][0]['table']['rows'],
-            'zona_b': data['tables_groups'][0]['tables'][1]['table']['rows']
-        }
+            supabase.upload_data('tabla_nacional', fixture)
+        else:
+            print(f"ERROR, {url_liga} trae un JSON Vacío!")
 
-        supabase.upload_data('tabla_nacional', fixture)
-        
     else:
         print(f"Error al obtener datos: {response.status_code}")
 
