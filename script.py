@@ -1,4 +1,3 @@
-from pytest import fixture
 import requests
 from supabaseService import Supabase
 
